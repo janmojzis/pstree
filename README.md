@@ -1,4 +1,3 @@
-pstree
-======
+See:
 
-Unix process tree
+http://mojzis.com/software/pstree/
