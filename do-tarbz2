@@ -1,0 +1,28 @@
+#!/bin/sh -e
+
+#20131121
+#Jan Mojzis
+#Public domain.
+
+[ -f do-tarbz2 ] || (echo "file do-tarbz2 not found"; exit 111;)
+[ -f debian/changelog ] || (echo "file debian/changelog not found"; exit 111;)
+
+version=`head -1 debian/changelog  | cut -d '(' -f2 | cut -d ')' -f1`
+
+build="`pwd`/build"
+rm -rf "${build}/pstree-${version}"
+mkdir -p "${build}/pstree-${version}"
+
+files=""
+for f in `ls | sort`; do
+  [ x"${f}" = xbuild ] && continue
+  [ x"${f}" = xdo-tarbz2 ] && continue
+  files="${files} ${f}"
+done
+cp -pr ${files} "${build}/pstree-${version}"
+(
+  cd "${build}"
+  tar cf - "pstree-${version}" | bzip2 > "pstree-${version}.tar.bz2.tmp"
+  mv -f "pstree-${version}.tar.bz2.tmp" "pstree-${version}.tar.bz2"
+  rm -rf "pstree-${version}"
+)

@@ -1,0 +1,17 @@
+#include <procfs.h>
+#include <stdio.h>
+
+int main(){
+
+    psinfo_t *ps;
+
+    printf("/* Public domain. */\n\n");
+    printf("#ifndef _PROCTYPE_H____\n");
+    printf("#define _PROCTYPE_H____\n\n");
+    printf("#include <procfs.h>\n\n");
+    printf("#define PROCTYPE_PSINFO 1\n\n");
+    printf("#endif /* _PROCTYPE_H____ */\n");
+    return 0;
+}
+
+

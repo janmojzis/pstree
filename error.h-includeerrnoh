@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <errno.h>
+
+int main(){
+
+  errno = 0;
+
+  printf("/* Public domain. */\n\n");
+  printf("#ifndef _ERROR_H____\n");
+  printf("#define _ERROR_H____\n\n");
+  printf("#include <errno.h>\n\n");
+  printf("extern int error_intr;\n");
+  printf("extern int error_nomem;\n");
+  printf("extern int error_noent;\n");
+  printf("extern int error_txtbsy;\n");
+  printf("extern int error_io;\n");
+  printf("extern int error_exist;\n");
+  printf("extern int error_timeout;\n");
+  printf("extern int error_inprogress;\n");
+  printf("extern int error_wouldblock;\n");
+  printf("extern int error_again;\n");
+  printf("extern int error_pipe;\n");
+  printf("extern int error_perm;\n");
+  printf("extern int error_acces;\n");
+  printf("extern int error_nodevice;\n");
+  printf("extern int error_proto;\n");
+  printf("extern int error_isdir;\n");
+  printf("extern int error_connrefused;\n\n");
+  printf("extern int error_notdir;\n\n");
+  printf("extern const char *error_str(int);\n");
+  printf("extern int error_temp(int);\n\n");
+  printf("#endif /* _ERROR_H____ */\n");
+  return 0;
+}

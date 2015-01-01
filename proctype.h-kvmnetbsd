@@ -1,0 +1,40 @@
+#include <sys/param.h>
+#include <sys/user.h>
+#include <sys/sysctl.h>
+#include <sys/proc.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <kvm.h>
+
+#include <stdio.h>
+
+
+char errbuf[4096];
+
+int main() {
+
+    struct kinfo_proc2 *kp;
+    kvm_t *kd;
+    int nentries, i, xi;
+    char *xs;
+
+    kd = kvm_openfiles(0, 0, 0, O_RDONLY, errbuf);
+    if (!kd) return 111;
+
+    kp = kvm_getproc2(kd, KERN_PROC_ALL, 0, sizeof(*kp), &nentries);
+    if (!kp) return 111;
+
+    for (i = 0; i < nentries; i++) {
+        xi = kp[i].p_pid;
+        xi = kp[i].p_ppid;
+        xs = kp[i].p_comm;
+    }
+    kvm_close(kd);
+
+    printf("/* Public domain. */\n\n");
+    printf("#ifndef _PROCTYPE_H____\n");
+    printf("#define _PROCTYPE_H____\n\n");
+    printf("#define PROCTYPE_KVMNETBSD 1\n\n");
+    printf("#endif /* _PROCTYPE_H____ */\n");
+    return 0;
+}

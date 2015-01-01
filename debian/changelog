@@ -1,0 +1,51 @@
+pstree (20140101) unstable; urgency=low
+
+  * fixed version string
+
+ -- Jan Mojzis <jan.mojzis@gmail.com>  Wed, 01 Jan 2014 15:14:30 +0100
+
+pstree (201311123) unstable; urgency=low
+
+  * added support for BSD kinfo_proc (MacOSx, NetBSD)
+  * added support for NetBSD kvm
+  * threads for OpenBSD/FreeBSD
+
+ -- Jan Mojzis <jan.mojzis@gmail.com>  Sat, 23 Nov 2013 17:00:30 +0100
+
+pstree (201311121) unstable; urgency=low
+
+  * added support for OpenBSD/FreeBSD kvm
+
+ -- Jan Mojzis <jan.mojzis@gmail.com>  Thu, 21 Nov 2013 22:14:47 +0100
+
+pstree (20110310) unstable; urgency=low
+
+  * fixed closedir bug
+
+ -- Jan Mojzis <jan.mojzis@gmail.com>  Thu, 10 Mar 2011 19:43:10 +0100
+
+pstree (20091020) unstable; urgency=low
+
+  * Linux and BSD parser is now in one file
+
+ -- Jan Mojzis <jan.mojzis@gmail.com>  Tue, 20 Oct 2009 13:12:16 +0200
+
+pstree (20091019) unstable; urgency=low
+
+  * Added threads to result
+
+ -- Jan Mojzis <jan.mojzis@gmail.com>  Mon, 19 Oct 2009 13:16:46 +0200
+
+pstree (20091018) unstable; urgency=low
+
+  * Switched to new 'choose' script
+  * Removed conflict with psmisc
+  * Added diversion to /usr/bin/pstree
+
+ -- Jan Mojzis <jan.mojzis@gmail.com>  Sun, 18 Oct 2009 00:27:23 +0200
+
+pstree (20090102) unstable; urgency=low
+
+  * First release
+
+ -- Jan Mojzis <jan.mojzis@gmail.com>  Fri, 02 Jan 2009 21:44:46 +0100

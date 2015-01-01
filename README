@@ -1,0 +1,35 @@
+This software is in the public domain and
+is based on public domain libraries from djbdns and daemontools.
+
+
+Instalation
+===========
+
+1. configure compiler
+echo "gcc -O2" > conf-cc
+echo "gcc -s" > conf-ld
+
+2. configure directory
+echo "/usr/local" > conf-home
+
+3. compile binary
+make 
+
+4. install binary
+make install
+
+(5). remove target files, objects and static libraries
+make clean
+
+Removing
+========
+make unistall
+
+
+Debian package
+==============
+make deb
+
+Solaris Package
+===============
+make solaris

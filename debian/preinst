@@ -1,0 +1,13 @@
+#!/bin/sh
+
+
+add_diversion() {
+  dpkg-divert --package pstree --add --rename --divert "$1.distrib" "$1"
+}
+
+
+if [ x"$1" = "xinstall" ]; then
+  add_diversion /usr/bin/pstree
+fi
+
+

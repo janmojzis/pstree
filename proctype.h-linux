@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+
+int main(){
+
+    FILE *f;
+    int pid, ppid, s;
+    char ch;
+
+    f = fopen("/proc/1/stat","r");
+    if (!f) return 1;
+
+    s = fscanf(f, "%d (init) %c %d", &pid, &ch, &ppid);
+    if (s <= 0) return 1;
+    if (pid != 1) return 1;
+    if (ppid != 0) return 1;
+
+    printf("/* Public domain. */\n\n");
+    printf("#define PROCTYPE_LINUX 1\n\n");
+
+    return 0;
+
+}

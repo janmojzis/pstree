@@ -1,0 +1,5 @@
+PKG=MJpstree
+NAME=pstree
+VERSION=1.0.0
+CATEGORY=application
+BASEDIR=/usr/sfw

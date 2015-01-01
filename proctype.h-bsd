@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+
+int main(){
+
+    FILE *f;
+    int pid, ppid, s;
+
+    f = fopen("/proc/1/status","r");
+    if (!f) return 1;
+
+    s = fscanf(f, "init %d %d", &pid, &ppid);
+    if (s <= 0) return 1;
+    if (pid != 1) return 1;
+    if (ppid != 0) return 1;
+
+    printf("/* Public domain. */\n\n");
+    printf("#define PROCTYPE_BSD 1\n\n");
+
+    return 0;
+
+}

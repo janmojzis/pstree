@@ -1,0 +1,40 @@
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/sysctl.h>
+#include <sys/proc.h>
+#include <stdio.h>
+
+int main() {
+
+    struct kinfo_proc *kp = 0;
+    static const int name[] = { CTL_KERN, KERN_PROC, KERN_PROC_ALL, 0 };
+    int r;
+    size_t length;
+    int nentries, xi;
+    char *xs;
+
+    r = sysctl((int *)name, (sizeof(name) / sizeof(*name)) - 1, 0, &length, 0, 0);
+    if (r < 0) return 111;
+    nentries = length / sizeof(struct kinfo_proc); 
+
+    kp = malloc(length);
+    if (!kp) return 111;
+
+    // Get the actual process list
+    r = sysctl((int *)name, (sizeof(name) / sizeof(*name)) - 1, kp, &length, 0, 0);
+    if (r < 0) return 111;
+
+    xi=kp[0].kp_proc.p_pid;
+    xi=kp[0].kp_eproc.e_ppid;
+    xs=kp[0].kp_proc.p_comm;
+    xi=kp[0].kp_proc.p_flag; /* TODO */
+
+    printf("/* Public domain. */\n\n");
+    printf("#ifndef _PROCTYPE_H____\n");
+    printf("#define _PROCTYPE_H____\n\n");
+    printf("#define PROCTYPE_BSDKINFOPROC 1\n\n");
+    printf("#endif /* _PROCTYPE_H____ */\n");
+    return 0;
+}
+
+

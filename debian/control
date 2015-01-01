@@ -1,0 +1,12 @@
+Source: pstree
+Section: utils
+Priority: optional
+Build-Depends: libc6-dev, cdbs, debhelper
+Maintainer: Jan Mojzis <jan.mojzis@gmail.com>
+
+Package: pstree
+Section: utils
+Depends: ${shlibs:Depends}
+Architecture: any
+Description: Prints process tree
+
